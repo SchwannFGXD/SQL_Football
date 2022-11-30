@@ -38,7 +38,7 @@ SELECT COUNT(*) FROM matches WHERE division_code = 'D1' AND (hometeam = 'Freibur
 5) Find the unique names of the teams which include the word "City" in their name (as entered in the database)
 
 ```sql
-<!-- Copy solution here -->
+SELECT DISTINCT hometeam FROM matches WHERE hometeam like '%City%';
 
 
 ```
@@ -46,7 +46,8 @@ SELECT COUNT(*) FROM matches WHERE division_code = 'D1' AND (hometeam = 'Freibur
 6) How many different teams have played in matches recorded in a French division?
 
 ```sql
-<!-- Copy solution here -->
+SELECT code FROM divisions WHERE country = 'France';
+SELECT COUNT(DISTINCT hometeam) FROM matches WHERE division_code = 'F1' OR division_code = 'F2'
 
 
 ```
@@ -54,7 +55,7 @@ SELECT COUNT(*) FROM matches WHERE division_code = 'D1' AND (hometeam = 'Freibur
 7) Have Huddersfield played Swansea in the period covered?
 
 ```sql
-SELECT count(*) FROM matches WHERE (hometeam = 'Huddersfield' AND awayteam = 'Swansea') OR (awayteam = 'Huddersfield' AND hometeam = 'Swansea');
+SELECT * FROM matches WHERE (hometeam = 'Huddersfield' AND awayteam = 'Swansea') OR (awayteam = 'Huddersfield' AND hometeam = 'Swansea');
 
 
 ```
@@ -63,7 +64,7 @@ SELECT count(*) FROM matches WHERE (hometeam = 'Huddersfield' AND awayteam = 'Sw
 
 ```sql
 SELECT code FROM divisions WHERE name = 'Eredivisie';
-SELECT * FROM matches WHERE division_code = 'N1' AND ftr = 'D' AND season >2010 AND season <2015;
+SELECT count(*) FROM matches WHERE division_code = 'N1' AND ftr = 'D' AND season >2010 AND season <2015;
 
 
 ```
@@ -72,7 +73,7 @@ SELECT * FROM matches WHERE division_code = 'N1' AND ftr = 'D' AND season >2010 
 
 ```sql
 SELECT code FROM divisions WHERE name = 'Premier League';
-SELECT * FROM matches WHERE division_code = 'E0' ORDER BY (fthg+ftag) DESC;
+SELECT * FROM matches WHERE division_code = 'E0' ORDER BY (fthg+ftag) DESC, fthg DESC;
 
 
 
@@ -81,7 +82,8 @@ SELECT * FROM matches WHERE division_code = 'E0' ORDER BY (fthg+ftag) DESC;
 10) In which division and which season were the most goals scored?
 
 ```sql
-<!-- Copy solution here -->
+SELECT division_code, season, SUM(fthg + ftag) FROM matches GROUP BY division_code, season ORDER BY SUM(fthg + ftag) DESC LIMIT 1;
+
 
 
 ```
