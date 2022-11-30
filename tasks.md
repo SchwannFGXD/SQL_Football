@@ -5,7 +5,7 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 1) Find all the matches from 2017.
 
 ```sql
-<!SELECT * FROM matches WHERE season = 2017;
+SELECT * FROM matches WHERE season = 2017;
 
 
 ```
@@ -13,7 +13,7 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 2) Find all the matches featuring Barcelona.
 
 ```sql
-<!SELECT * FROM matches WHERE hometeam = 'Barcelona' OR awayteam = 'Barcelona';
+SELECT * FROM matches WHERE hometeam = 'Barcelona' OR awayteam = 'Barcelona';
 
 
 ```
@@ -21,7 +21,7 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 3) What are the names of the Scottish divisions included?
 
 ```sql
-<!SELECT DISTINCT name FROM divisions WHERE country = 'Scotland' GROUP BY name;
+SELECT DISTINCT name FROM divisions WHERE country = 'Scotland' GROUP BY name;
 
 
 ```
@@ -29,8 +29,8 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 4) Find the division code for the Bundesliga. Use that code to find out how many matches Freiburg have played in the Bundesliga since the data started being collected.
 
 ```sql
-<!SELECT code FROM divisions WHERE name = 'Bundesliga';
-<!SELECT COUNT(*) FROM matches WHERE division_code = 'D1' AND (hometeam = 'Freiburg' OR awayteam = 'Freiburg');
+SELECT code FROM divisions WHERE name = 'Bundesliga';
+SELECT COUNT(*) FROM matches WHERE division_code = 'D1' AND (hometeam = 'Freiburg' OR awayteam = 'Freiburg');
 
 
 ```
@@ -54,7 +54,7 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 7) Have Huddersfield played Swansea in the period covered?
 
 ```sql
-<!SELECT count(*) FROM matches WHERE (hometeam = 'Huddersfield' AND awayteam = 'Swansea') OR (awayteam = 'Huddersfield' AND hometeam = 'Swansea');
+SELECT count(*) FROM matches WHERE (hometeam = 'Huddersfield' AND awayteam = 'Swansea') OR (awayteam = 'Huddersfield' AND hometeam = 'Swansea');
 
 
 ```
@@ -62,8 +62,8 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 8) How many draws were there in the Eredivisie between 2010 and 2015?
 
 ```sql
-<!SELECT code FROM divisions WHERE name = 'Eredivisie';
-<!SELECT * FROM matches WHERE division_code = 'N1' AND ftr = 'D' AND season >2010 AND season <2015;
+SELECT code FROM divisions WHERE name = 'Eredivisie';
+SELECT * FROM matches WHERE division_code = 'N1' AND ftr = 'D' AND season >2010 AND season <2015;
 
 
 ```
@@ -71,8 +71,8 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 9) Select the matches played in the Premier League in order of total goals scored from highest to lowest. Where there is a tie the match with more home goals should come first.
 
 ```sql
-<!SELECT code FROM divisions WHERE name = 'Premier League';
-<!SELECT * FROM matches WHERE division_code = 'E0' ORDER BY (fthg+ftag) DESC;
+SELECT code FROM divisions WHERE name = 'Premier League';
+SELECT * FROM matches WHERE division_code = 'E0' ORDER BY (fthg+ftag) DESC;
 
 
 
